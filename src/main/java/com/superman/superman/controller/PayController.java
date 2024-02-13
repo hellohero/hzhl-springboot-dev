@@ -78,8 +78,8 @@ public class PayController {
         String return_code = resultMap.get("return_code");
         String result_code = resultMap.get("result_code");
         String attach = resultMap.get("attach");
-        if (result_code.equalsIgnoreCase("SUCCESS")) {
-            if (return_code.equalsIgnoreCase("SUCCESS")) {
+        if ("SUCCESS".equalsIgnoreCase(result_code)) {
+            if ("SUCCESS".equalsIgnoreCase(return_code)) {
                 Map map = new HashMap();
                 map.put("id", attach);
                 map.put("sn", out_trade_no);
