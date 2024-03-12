@@ -3,6 +3,7 @@
  */
 package com.superman.superman.utils.sign;
 
+import java.security.SecureRandom;
 import org.apache.commons.lang.StringUtils;
 
 import java.text.SimpleDateFormat;
@@ -17,7 +18,7 @@ import java.util.UUID;
 */
 public class RandomUtils {
 
-	private static final Random RANDOM=new Random();
+	private static final Random RANDOM=new SecureRandom();
 
 	public static Random getRandom() {
 		return RANDOM;
