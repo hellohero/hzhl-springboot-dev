@@ -31,7 +31,7 @@ public class StringUtil {
 
     public static String subStr(String str , int length){
         String stri = null;
-        if(!StringUtil.isStrNull(str).equals("")){
+        if(!"".equals(StringUtil.isStrNull(str))){
             if(str.length() > length){
                 stri = str.substring(0, length)+"...";
             }else{
