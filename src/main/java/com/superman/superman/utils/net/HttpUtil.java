@@ -1,5 +1,7 @@
 package com.superman.superman.utils.net;
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -25,7 +27,7 @@ public class HttpUtil {
         String result = "";
         StringBuilder sb = new StringBuilder();
         try {
-            URL realUrl = new URL(url);
+            URL realUrl = Urls.create(url, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
             // 打开和URL之间的连接
             URLConnection conn = realUrl.openConnection();
             // 设置通用的请求属性
@@ -79,7 +81,7 @@ public class HttpUtil {
         String result = "";
         StringBuilder sb = new StringBuilder();
         try {
-            URL realUrl = new URL(url);
+            URL realUrl = Urls.create(url, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
             // 打开和URL之间的连接
             URLConnection conn = realUrl.openConnection();
             // 设置通用的请求属性
@@ -122,7 +124,7 @@ public class HttpUtil {
         BufferedReader in = null;
         try {
             String urlNameString = url + "?" + param;
-            URL realUrl = new URL(urlNameString);
+            URL realUrl = Urls.create(urlNameString, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
             // 打开和URL之间的连接
             URLConnection connection = realUrl.openConnection();
             // 设置通用的请求属性
@@ -168,7 +170,7 @@ public class HttpUtil {
         String result = "";
         BufferedReader in = null;
         try {
-            URL realUrl = new URL(url);
+            URL realUrl = Urls.create(url, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
             // 打开和URL之间的连接
             URLConnection connection = realUrl.openConnection();
             // 设置通用的请求属性
@@ -214,7 +216,7 @@ public class HttpUtil {
 
         try {
             /* 将网络资源地址传给,即赋值给url */
-            URL url = new URL(fileUrl);
+            URL url = Urls.create(fileUrl, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
 
 			/* 此为联系获得网络资源的固定格式用法，以便后面的in变量获得url截取网络资源的输入流 */
             URLConnection connection = url.openConnection();
