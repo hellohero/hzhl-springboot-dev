@@ -1,5 +1,6 @@
 package com.superman.superman.utils.net;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -50,7 +51,7 @@ public class HttpUtil {
             in = new BufferedReader(
                     new InputStreamReader(conn.getInputStream()));
             String line;
-            while ((line = in.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(in, 5_000_000)) != null) {
                 sb.append(line);
             }
             result = sb.toString();
@@ -96,7 +97,7 @@ public class HttpUtil {
             in = new BufferedReader(
                     new InputStreamReader(conn.getInputStream()));
             String line;
-            while ((line = in.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(in, 5_000_000)) != null) {
                 sb.append(line);
             }
             result = sb.toString();
@@ -144,7 +145,7 @@ public class HttpUtil {
             in = new BufferedReader(new InputStreamReader(
                     connection.getInputStream()));
             String line;
-            while ((line = in.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(in, 5_000_000)) != null) {
                 result += line;
             }
         } catch (Exception e) {
@@ -190,7 +191,7 @@ public class HttpUtil {
             in = new BufferedReader(new InputStreamReader(
                     connection.getInputStream()));
             String line;
-            while ((line = in.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(in, 5_000_000)) != null) {
                 result += line;
             }
         } catch (Exception e) {
